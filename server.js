@@ -1,6 +1,6 @@
 /*importar configurações do servidor */
 
-var app = require('./config/server');
+var app = require('./config/app');
 
 //parametrizar a porta de escuta
 
