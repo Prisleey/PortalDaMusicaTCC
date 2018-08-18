@@ -1,0 +1,42 @@
+1- Criar diretório
+2- Iniciar o npm
+	npm init
+	npm install nodemon --save
+	npm install express --save
+	npm install ejs --save
+	npm install consign --save
+	npm install body-parser --save
+	
+	
+MongoDB
+
+use [database] //seleciona database, se database não existir é criado
+db.[nome collection].save({campo1: valor1}); //se a database não existia, foi criado agora com um registro
+db.DropDataBase(); // deletar collection
+db.createCollection("nomeTable"); //cria a collection (table)
+db.getCollectionNames(); //mostra todas as collections (table)
+db.[nome collection].drop(); //drop em uma collection especifica
+
+db.[nomecollection].find().pretty(); //mostra todos os documentos (rows) dentro da collection (table)
+	CONSULTAS AOS DOCUMENTOS USANDO OPERADORES (WHERE):
+	=   -------  $eq  (equals)
+	>	-------  $gt  (greater than)
+	>=  -------  $gte (greater than or equal)
+	<	-------	 $lt  (less than)
+	<=	-------  $ltr (less than or equal)
+	!= / <> ---  $ne  (not equal)
+	db.[nomeCollection].find({[chave(coluna)]:{[operador]:'condicao'}}).pretty() //aqui é tipo um where //pretty() é pra aparecer o json bunitinho no cmd
+	
+	CONSULTAS AOS DOCUMENTOS USANDO OPERADORES LÓGICOS:
+	AND  ------- , (VIRGULA)
+	db.[nomeCollection].find({nome:{$eq:'prisley'},idade:{$gte:23}}).pretty(); // como se fosse um select * from Usuario where nome = 'prisley' and idade >= 23;
+
+	OR	 ------- $or:[{varias condições aqui dentro}]
+	db.[nomeCollection].find({$or[{nome:{$eq:'prisley'},idade:{$gte:23}}]}).pretty(); // como se fosse um select * from Usuario where nome = 'prisley' or idade >= 23;
+	
+	UPDATE:
+	db.[nomeCollection].update({nome:{$eq:'prisley'}},{$set:{nome:'prislaoooo'}},{multi:true}); //update tb set nome = 'prislaoooo' where nome='prisley';
+	***O PARAMETRO 'MULTI' SE ESTIVER TRUE, VAI ATUALIZAR TODOS OS REGISTROS QUE ESTIVEREM DE ACORDO COM A CONDIÇÃO
+		SE MULTI FOR FALSE OU NÃO ESTIVER NO COMANDO (MULTI POR DEFAULT É FALSE), VAI ATUALIZAR APENAS O PRIMEIRO REGISTRO QUE O COMANDO ENCONTRAR.***
+	
+	db.[nomeCollection].remove({nome:{$eq:'felipe'}}, false); delete from tb where nome = 'felipe' (o false quer dizer que vai deletar todos os registros dentro da condição, se estiver true vai deletar apenas o primeiro registro que encontrar) Se o segundo parametro (true/false) for omitido, o default é false.
