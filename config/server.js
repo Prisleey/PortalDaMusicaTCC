@@ -29,7 +29,7 @@ app.use(expressValidator());
 //autoload
 consign()
 	.include('/app/router/')
-	//.then('config/db_connection.js') // referencio o db_connection para não entrar em loop infinito chamando o server.js toda hora
+	.then('config/db_connection.js') // referencio o db_connection para não entrar em loop infinito chamando o server.js toda hora
 	.then('app/controller/')
 	.then('app/model/')
 	.into(app); //consign reconhece todas as rotas e inclui dentro do servidor
