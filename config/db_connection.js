@@ -1,23 +1,10 @@
-// importar o mongodb
-var mongodb = require('mongodb').MongoClient;
+// importar o mongoose
+var mongoose = require('mongoose');
 
-var connMongoDB = function() {
-    console.log('conexão');
-    var db = new mongodb.Db(
-        'PortalDaMusicaDB', 
-        new mongodb.Server(
-            'localhost', //string endereço servidor bd
-            27017, //porta de conexao
-            {} //objeto de configuração adicionais do servidor, nesse caso vazio
-        ),
-        {} //objeto de configuração adicionais do servidor, nesse caso vazio
-    );
-    return db;
-}
+mongoose.connect('mongodb://localhost:27017/PortalDaMusicaDB');
 
 module.exports = function() {
-
-    return connMongoDB;
+    return mongoose;
 }
 
 

@@ -1,6 +1,10 @@
 //importar modulo do framework express
 var express = require('express');
 
+//importar modulo mongoose
+var mongoose = require('mongoose');
+console.log(mongoose.Schema);
+
 //importar modulo do consign
 var consign = require('consign');
 
