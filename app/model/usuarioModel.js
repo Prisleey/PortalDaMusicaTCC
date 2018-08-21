@@ -7,6 +7,7 @@ var userSchema = new mongoose.Schema({
     login: {type: String, trim: true, index: true, required: true},
     email: {type: String, trim: true, index: true, required: true}
 });
+console.log(userSchema);
 console.log("********* TESTE *****************");
 // userSchema.post('save', function(error, doc, next) {
 //     next(error);
@@ -20,5 +21,7 @@ console.log("********* TESTE *****************");
 // });
 
     var User = mongoose.model('Usuario', userSchema);
+    console.log("VAI RETORNAR");
+    console.log(User);
     module.exports = User;
 // 
