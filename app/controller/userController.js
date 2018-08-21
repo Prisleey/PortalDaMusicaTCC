@@ -26,25 +26,34 @@ module.exports.login = function(application, req, res) {
 }
 
 module.exports.cadastro = function(application, req, res) {
-    console.log('aqui');
     var User = require('../model/usuarioModel');
 
     var userName = req.body.nome;
     var userLogin = req.body.login;
     var userEmail = req.body.email;
-    var userPwd = req.body.pwd;
+    var userPwd = req.body.senha;
 
-    var novoUsuario = User();
-    novoUsuario.nome = userName;
-    novoUsuario.senha = userPwd;
-    novoUsuario.login = userLogin;
-    novoUsuario.email = userEmail;
+    console.log('senha '+ userPwd );
+    console.log('login '+ userLogin);
+    console.log('email '+ userEmail);
+    console.log('name ' + userName);
 
-    novoUsuario.save(function(err, boa) {
+    var newUser = new User();
+    newUser.nome = userName;
+    newUser.senha = userPwd;
+    newUser.login = userLogin;
+    newUser.email = userEmail;
+    newUser.save(function(err, savedUser){
         if(err) {
             console.log(err);
-        } else {
-            console.log(boa);
+            console.log('aqui');
+            console.log(savedUser);
+            return res.status(500).send();
         }
+        console.log('fora do if 200');
+        return res.status(200).send();
     });
+
+
+
 }
