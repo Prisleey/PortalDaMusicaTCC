@@ -27,7 +27,6 @@ module.exports.login = function(application, req, res) {
 
 module.exports.cadastro = function(application, req, res) {
     var User = require('../model/usuarioModel');
-    extend = require('mongoose-schema-extend');
 
     var userName = req.body.nome;
     var userLogin = req.body.login;
@@ -53,7 +52,7 @@ module.exports.cadastro = function(application, req, res) {
             console.log('aqui');
             return res.status(500).send();
         }
-        console.log('fora do if 200');
-        return res.status(200).send();
+        res.render('index', { validacao : {} });
     });
+    
 }
