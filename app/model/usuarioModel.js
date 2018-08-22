@@ -1,13 +1,14 @@
 var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/PortalDaMusicaDB'); 
 var Schema = mongoose.Schema;
     
-var userSchema = new mongoose.Schema({
+mongoose.Promise = global.Promise;
+var userSchema = new Schema({
     nome: {type: String, required: true},
     senha: {type: String, required: true}, 
     login: {type: String, trim: true, index: true, required: true},
     email: {type: String, trim: true, index: true, required: true}
-});
-console.log(userSchema);
+}, { collection: 'Usuario' });
 console.log("********* TESTE *****************");
 // userSchema.post('save', function(error, doc, next) {
 //     next(error);
@@ -20,8 +21,6 @@ console.log("********* TESTE *****************");
 //     }
 // });
 
-    var User = mongoose.model('Usuario', userSchema);
     console.log("VAI RETORNAR");
-    console.log(User);
-    module.exports = User;
+    module.exports = mongoose.model('Usuario', userSchema);
 // 

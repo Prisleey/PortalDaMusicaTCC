@@ -27,6 +27,7 @@ module.exports.login = function(application, req, res) {
 
 module.exports.cadastro = function(application, req, res) {
     var User = require('../model/usuarioModel');
+    extend = require('mongoose-schema-extend');
 
     var userName = req.body.nome;
     var userLogin = req.body.login;
@@ -43,17 +44,16 @@ module.exports.cadastro = function(application, req, res) {
     newUser.senha = userPwd;
     newUser.login = userLogin;
     newUser.email = userEmail;
-    newUser.save(function(err, savedUser){
+    console.log('####################################VAMO PO SEIVE######################################');
+    console.log(newUser);
+    newUser.save(function(err, newUser,) {
+        console.log('*********************************************************save***************************************************');
         if(err) {
             console.log(err);
             console.log('aqui');
-            console.log(savedUser);
             return res.status(500).send();
         }
         console.log('fora do if 200');
         return res.status(200).send();
     });
-
-
-
 }
