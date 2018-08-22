@@ -1,24 +1,20 @@
 module.exports.login = function(application, req, res) {
-    
+    console.log("Chegou na login controller");
     var dadosFormLogin = req.body;
 
-    req.assert('login', 'Login é obrigatório.').notEmpty();
-    req.assert('senha', 'Senha é obrigatório.').notEmpty();
 
-    var errors = req.validationErrors();
 
-    if(!errors) {
-        // var connection = application.config.db_connection;
-        // console.log(connection());
-        // var usuarioDAO = new application.app.model.usuarioDAO(connection);
+    // var connection = application.config.db_connection;
+    // console.log(connection());
+    // var usuarioDAO = new application.app.model.usuarioDAO(connection);
 
-        // console.log(connection);
-        // usuarioDAO.login(dadosFormLogin);
-        application.app.model.loginModel.verificarLogin(application, res, dadosFormLogin);
-        return;
-    } else {
-        //res.send('Existem erros no formulário');
-        res.render('index', { validacao : errors });
-        return;
-    }
+    // console.log(connection);
+    // usuarioDAO.login(dadosFormLogin);
+    var userLogin = req.body.login;
+    var userSenha = req.body.senha;
+
+    console.log(userLogin);
+    console.log(userSenha);
+    console.log(application.app);
+    application.app.model.loginModel.verificarLogin(userLogin, userSenha);
 }
