@@ -11,7 +11,7 @@ module.exports.cadastro = function(application, req, res) {
     console.log('email '+ userEmail);
     console.log('name ' + userName);
 
-    var newUser = new User();
+    var newUser = new application.app.model.usuarioModel.Schema();
     newUser.nome = userName;
     newUser.senha = userPwd;
     newUser.login = userLogin;

@@ -1,9 +1,11 @@
 module.exports.Schema = function() {
+    console.log("entrou em schema");
     var mongoose = require('mongoose');
-    mongoose.connect('mongodb://localhost:27017/PortalDaMusicaDB'); 
+    mongoose.createConnection('mongodb://localhost:27017/PortalDaMusicaDB'); 
     var Schema = mongoose.Schema;
         
     mongoose.Promise = global.Promise;
+    console.log("PROMETEU");
     var userSchema = new Schema({
         nome: {type: String, required: true},
         senha: {type: String, required: true}, 

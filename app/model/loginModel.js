@@ -2,14 +2,21 @@ var mongoose = require('mongoose');
  
 
 
-module.exports.verificarLogin = function(login, senha){
-	mongoose.connect('mongodb://localhost:27017/PortalDaMusicaDB');
-	var usuario = require("../model/usuarioModel");
+module.exports.verificarLogin = function(application, login, senha){
+	mongoose.createConnection('mongodb://localhost:27017/PortalDaMusicaDB');
+	console.log("TESTEEEE");
+	console.log(application.app);
+	var usuario = new application.app.model.usuarioModel.Schema();
 	console.log("OPA LOGIN");
-	console.log(usuario.findOne({
-		"login": login,
-		"senha": senha
-	}));
+	usuario.findOne({login:login, senha:senha}, function(err, user){
+		if(err){
+			console.log(err);
+		}else{
+			console.log("find one");
+			return user;
+		}
+
+	});
 }
 
 

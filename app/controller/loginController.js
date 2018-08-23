@@ -16,5 +16,6 @@ module.exports.login = function(application, req, res) {
     console.log(userLogin);
     console.log(userSenha);
     console.log(application.app);
-    application.app.model.loginModel.verificarLogin(userLogin, userSenha);
+    var usuarioLoggado = application.app.model.loginModel.verificarLogin(application, userLogin, userSenha);
+    console.log("OPA VORTOU");
 }
