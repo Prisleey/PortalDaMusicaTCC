@@ -1,5 +1,5 @@
 module.exports.cadastro = function(application, req, res) {
-    var User = require('../model/usuarioModel');
+    //var User = require('../model/usuarioModel');
 
     var userName = req.body.nome;
     var userLogin = req.body.login;
@@ -18,7 +18,7 @@ module.exports.cadastro = function(application, req, res) {
     newUser.email = userEmail;
     console.log('####################################VAMO PO SEIVE######################################');
     console.log(newUser);
-    newUser.save(function(err, newUser,) {
+    newUser.save(function(err, newUser) {
         console.log('*********************************************************save***************************************************');
         if(err) {
             console.log(err);
